@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>麦麦饭局 McFeast — 一句话搞定聚餐点麦当劳</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #FFFDF9; color: #2C2C2A; line-height: 1.7; padding: 40px 20px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  header { text-align: center; padding-bottom: 28px; border-bottom: 1px solid #EFE9DC; }
+  .logo { font-size: 13px; letter-spacing: 3px; color: #BA7517; font-weight: 500; }
+  h1 { font-size: 30px; font-weight: 600; margin: 10px 0 8px; letter-spacing: -0.5px; }
+  .sub { font-size: 15px; color: #6B6862; }
+  h2 { font-size: 17px; font-weight: 600; margin: 34px 0 14px; }
+  p { font-size: 15px; color: #4A4741; margin-bottom: 12px; }
+  .card {
+    background: #FFFFFF; border: 1px solid #EDE6D8; border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 16px;
+  }
+  .chat { background: #F5F1E8; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; font-size: 14.5px; }
+  .chat.me { background: #FCEBEB; border-left: 3px solid #E24B4A; }
+  .chat .who { font-size: 12px; color: #888780; margin-bottom: 4px; }
+  pre {
+    background: #2C2C2A; color: #F1EFE8; border-radius: 10px; padding: 18px 20px;
+    font-size: 13px; line-height: 1.75; overflow-x: auto; font-family: "SF Mono", Menlo, monospace;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { text-align: left; padding: 9px 4px; border-bottom: 1px solid #F0EADC; }
+  th { color: #888780; font-weight: 500; font-size: 13px; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .save { color: #A32D2D; font-weight: 600; }
+  .strike { color: #9C988F; text-decoration: line-through; }
+  .tag {
+    display: inline-block; background: #FAEEDA; color: #854F0B; border-radius: 6px;
+    padding: 3px 9px; font-size: 12.5px; margin: 0 6px 6px 0;
+  }
+  ol, ul { padding-left: 20px; font-size: 15px; color: #4A4741; }
+  li { margin-bottom: 7px; }
+  code { background: #F1EFE8; padding: 2px 6px; border-radius: 4px; font-size: 13.5px; }
+  .note {
+    background: #FAEEDA; border-left: 3px solid #BA7517; border-radius: 0 10px 10px 0;
+    padding: 13px 16px; font-size: 14px; color: #633806; margin: 16px 0;
+  }
+  footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid #EFE9DC; font-size: 13px; color: #9C988F; }
+  a { color: #A32D2D; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">M c F e a s t</div>
+  <h1>麦麦饭局</h1>
+  <p class="sub">一句话发起聚餐，AI 凑出最划算且合忌口的一单，AA 分账，直出支付链接。</p>
+</header>
+
+<h2>它解决什么</h2>
+<div class="card">
+  <table>
+    <tr><th>聚餐痛点</th><th>麦麦饭局怎么做</th></tr>
+    <tr><td>七嘴八舌点不齐</td><td>一句话收集人数、预算、忌口</td></tr>
+    <tr><td>套餐贵还是单点贵算不清</td><td>单点/套餐/优惠券统一比价，说出省了多少</td></tr>
+    <tr><td>有人忌口没人管</td><td>用营养数据过滤，并精准替换套餐内单品</td></tr>
+    <tr><td>AA 分账扯皮</td><td>按「谁点了什么」自动算每人应付</td></tr>
+    <tr><td>下单要来回切 App</td><td>确认后直接创建订单，返回支付链接</td></tr>
+  </table>
+</div>
+
+<h2>怎么用（示例对话）</h2>
+<div class="chat me">
+  <div class="who">你</div>
+  6 个人聚餐，人均 30 块以内，两个人不吃辣、一个不要牛肉，帮我们凑一单最划算的，AA 分账。
+</div>
+<div class="chat">
+  <div class="who">麦麦饭局</div>
+  已选定门店并比价完毕：原价 ¥214.00，最优组合实付 ¥163.50，省 ¥50.50。已按忌口替换 2 份辣味单品、排除含牛肉单品。AA 分账见下。回复「确认」即创建订单。
+</div>
+
+<h2>输出长这样</h2>
+<pre>🍔 麦麦饭局方案（6 人 / 门店：XX 餐厅）
+
+✅ 推荐组合  原价 ¥214.00 → 实付 ¥163.50
+   <span style="color:#F0997B">省 ¥50.50，7.6 折</span>
+   用了：麦麦省「满 100 减 15」+ 2 张板烧券
+
+📋 明细
+   · 巨无霸套餐 ×2        ¥47.00 → ¥41.00
+   · 板烧鸡腿堡套餐 ×2    ¥45.00 → ¥35.00（已替换为不辣）
+   · 麦乐鸡（5 块）×2     ¥22.00
+   ⚠️ 已按忌口排除：麻辣香骨鸡、安格斯厚牛堡
+
+💰 AA 分账
+   不吃辣组（2 人）   各 ¥26.50
+   不要牛肉组（1 人）  ¥28.00
+   其余（3 人）       各 ¥27.50
+
+🔗 回复「确认」创建订单并生成支付链接</pre>
+
+<div class="note">
+  以上为示例数据，用于展示输出格式。真实价格、券与库存以麦当劳官方实时结果为准。
+</div>
+
+<h2>背后调用了哪些麦当劳 MCP 能力</h2>
+<div>
+  <span class="tag">now-time-info 餐段</span>
+  <span class="tag">query-nearby-stores 门店</span>
+  <span class="tag">query-meals 菜单</span>
+  <span class="tag">query-meal-detail 套餐组成</span>
+  <span class="tag">list-nutrition-foods 忌口过滤</span>
+  <span class="tag">auto-bind-coupons 一键领券</span>
+  <span class="tag">query-my-coupons 我的券</span>
+  <span class="tag">query-store-coupons 门店券</span>
+  <span class="tag">calculate-price 比价</span>
+  <span class="tag">create-order 下单</span>
+  <span class="tag">query-order 追踪</span>
+  <span class="tag">delivery-query-stores 外送</span>
+</div>
+
+<h2>安装</h2>
+<div class="card">
+  <ol>
+    <li>打开 <a href="https://open.mcd.cn/mcp">open.mcd.cn/mcp</a>，手机号登录 → 控制台 → 激活，领取 MCP Token</li>
+    <li>WorkBuddy 左侧【专家·技能·连接器】→【连接器】→【自定义连接器】→【配置 MCP】</li>
+    <li>填入 <code>mcp-config.example.json</code> 中的配置，把 <code>${MCD_MCP_TOKEN}</code> 换成你的 Token，保存并启用</li>
+    <li>加载本 Skill，直接对话即可</li>
+  </ol>
+</div>
+
+<footer>
+  麦麦饭局 McFeast · 麦当劳程序员创意开发大赛参赛作品 · 由参赛者独立开发，<strong>非麦当劳官方产品</strong>。<br>
+  输出仅供参考，不构成医疗或营养专业建议；餐品价格与供应状态以麦当劳官方渠道实时结果为准。
+</footer>
+
+</div>
+</body>
+</html>

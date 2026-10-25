@@ -1,6 +1,8 @@
 # 麦麦饭局 McFeast
 
 > 一句话发起聚餐，AI 自动凑出**最划算 + 合口味**的一单，AA 分账，直出支付链接。
+>
+> 仓库：<https://github.com/vipstanley/mcd-feast-buddy>
 
 基于麦当劳官方 MCP（`M-China/mcd-mcp-server`）构建的 WorkBuddy Skill，专治「部门下午茶 / 宿舍团餐 / 朋友聚会点麦当劳」时那个永恒难题：
 **谁想吃什么说不清、套餐和单点哪个划算算不明、最后谁付多少分不清。**
@@ -61,7 +63,13 @@
 
 ### 安装本 Skill
 
-将本仓库 `skill/` 目录放入 WorkBuddy 的 Skill 目录，或在 WorkBuddy 中直接加载本 Skill 后即可对话使用。
+```bash
+git clone https://github.com/vipstanley/mcd-feast-buddy.git
+```
+
+将仓库中的 `skill/` 目录放入 WorkBuddy 的 Skill 目录，或在 WorkBuddy 中直接加载该 Skill 后即可对话使用。
+
+想先看效果，直接打开 `web/index.html` 即可（单页介绍与输出示例，无需 Token）。
 
 ---
 
