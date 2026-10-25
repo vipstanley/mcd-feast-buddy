@@ -64,8 +64,11 @@
 
 ## 4. 联调与验证
 
+- Token 已由用户本人领取（需手机号短信验证，AI 无法代领）。配置写入本地 `~/.workbuddy/mcp.json`，真实配置文件不入仓库、不回显
+- **端点连通验证**：`initialize` 返回 `mcd-mcp v1.0.0`，`protocolVersion 2024-11-05`
+- **真实工具调用**：`now-time-info` 返回服务器时间 `2026-10-25 11:32:04`；`query-my-account` 成功返回积分账户信息（数值已脱敏，不外泄 accountId）
+- **端点争议澄清**：`mcp.mcd.cn` 实测有效；`open.mcd.cn/mcp` 为领 Token 的控制台页，非 MCP 端点
 - `web/index.html` 单页 Demo 已产出，示例数据已在页面上明确标注为「示例」，避免误导
-- 真实 MCP 联调待 Token 到位后进行，将记录真实调用返回与截图，并回填本节
 
 ## 5. 交付文件
 
