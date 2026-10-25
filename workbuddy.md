@@ -70,10 +70,54 @@
 - **端点争议澄清**：`mcp.mcd.cn` 实测有效；`open.mcd.cn/mcp` 为领 Token 的控制台页，非 MCP 端点
 - `web/index.html` 单页 Demo 已产出，示例数据已在页面上明确标注为「示例」，避免误导
 
-## 5. 交付文件
+## 5. 方向收缩：只做到店自取，砍掉外送与多方案穷举
 
-- README.md
+拿到真实数据后，第一轮「七步工作流 + 12 个工具」的方案被证明撑不住：
+
+- 外送链路（`delivery-query-stores` / `delivery-query-addresses`）涉及收货地址，参数多、失败率高，且与「到店自取」是两套逻辑
+- 「全单点 / 全套餐 / 混搭」多方案穷举会把工具调用次数推到限流边缘，实测中也没有带来更好的价格——因为最优解几乎总是「一份多人餐 + 若干带券套餐」
+- `list-nutrition-foods` 做忌口过滤既慢又不可靠（营养表不给「是否含辣」），改用**菜名关键词排除 + `query-meal-detail` 换子项**，更准也更快
+
+于是方向收缩为 **A 瘦身版**：到店自取 · 真菜单 → 真券 → `calculate-price` 真报价 → AA 分账 → **停在下单前**。工具从 12 个减到主链路 6 个。
+
+## 6. 实测打通与 SKILL 重写
+
+用真实 Token 做了 14 次只读调用，打通门店 / 菜单 / 套餐详情 / 门店券 / 带券计价 / 换子项计价六类能力，据此重写 `skill/SKILL.md`（208 行，三段式）。实测中踩到的坑全部写进了 SKILL 的硬约束：
+
+1. **金额单位是分**：`calculate-price` 的 `price` / `originalPrice` / `subtotal` 全为分，`query-meals` 的 `currentPrice` 是元字符串——两者混用会差 100 倍
+2. **券适用商品可能不在菜单里**：`9900004002`（麦辣鸡腿堡3件套）不在门店 1450713 的菜单返回中，但 `calculate-price` 接受它并给出用券价。所以商品 code 的合法来源必须包含 `query-store-coupons` 返回的 `products[].productCode`
+3. **`roundList` 只传改动过的那一轮**：双人餐有 4 轮，只改第 2 轮就只传 `round: "2"`，多传会报错
+4. **`query-my-coupons` 不能用于计价**：只返回渲染好的文本，没有 `couponId` / `couponCode`
+5. **工具返回前半段是字段说明**，真实数据在 `## Original Response` 之后的 JSON 里
+
+## 7. 端到端跑通（真实调用，两次）
+
+固定用例：*4 个人到店聚餐，上海市 人民广场 附近，1 个人不吃辣，人均 30 以内。*
+
+2026-10-25 12:57 第一次跑通，13:01 原样复跑第二次，数字完全一致：
+
+| 环节 | 结果 |
+| --- | --- |
+| `query-nearby-stores` | 4 家门店，取 `1450713` 麦当劳上海黄浦华旭国际大厦餐厅（144 m，营业中） |
+| `query-meals` | 15 分类 / 124 餐品 |
+| `query-meal-detail` | 双人餐第 2 轮默认麦辣鸡腿汉堡 `1440` → 换板烧鸡腿堡 `1406`（+¥1） |
+| `auto-bind-coupons` | 成功领取 3 张券（11.9元麦辣鸡腿堡 / 19.9元王牌炸鸡任选2 / 免费脆薯饼） |
+| `query-store-coupons` | 本店可用 1 张，适用 `9900004002` |
+| `calculate-price` | `originalPrice 14030` → `price 11720`（¥140.30 → ¥117.20，省 ¥23.10） |
+| 券生效校验 | 该行 `4600 → 2290` ✅ |
+| AA 分账 | ¥29.57 / ¥29.57 / ¥27.02 / ¥31.04，合计 ¥117.20 = 实付 ✅ |
+| 是否下单 | **否**，未调用 `create-order` |
+
+完整入参与逐行返回见 `docs/真实跑通记录.md`，原始 JSON 见 `docs/实测数据/`（券码与 couponId 已遮盖）。
+
+## 8. 交付文件
+
+- README.md（示例输出已换为真实运行数据）
 - CONTEST_DECLARATION.md（官方原文，未改动）
-- MCP_INTEGRATION.md
+- MCP_INTEGRATION.md（工具清单 6+2、调用流程、5 个实测坑）
 - mcp-config.example.json（仅环境变量占位符）
+- 使用说明.md（三段式工作流 + 真实输出）
+- skill/SKILL.md（三段式，208 行）
+- docs/真实跑通记录.md、docs/实测数据/
+- web/index.html（真实输出 + 「演示停在下单前」）
 - workbuddy.md（本文件）

@@ -1,0 +1,145 @@
+{
+ "args": {
+  "storeCode": "1450713",
+  "orderType": 1,
+  "beType": 1,
+  "code": "9900004002"
+ },
+ "data": {
+  "code": "9900004002",
+  "name": "麦辣鸡腿堡3件套",
+  "rounds": [
+   {
+    "id": 1,
+    "name": "麦辣鸡腿汉堡",
+    "quantity": 1,
+    "maxQuantity": 1,
+    "minQuantity": 1,
+    "choices": [
+     {
+      "code": "1440",
+      "name": "麦辣鸡腿汉堡",
+      "quantity": 1,
+      "maxQuantity": -1,
+      "isDefault": 1,
+      "diffPrice": "+ ¥0",
+      "supportModify": true,
+      "modification": {
+       "items": [
+        {
+         "maxValues": 2,
+         "minValues": 0,
+         "values": [
+          {
+           "code": "100136",
+           "price": 0,
+           "name": "麦香鸡酱",
+           "maxQuantity": 1,
+           "minQuantity": 0,
+           "selectedQuantity": 1,
+           "selectedKey": "0-1",
+           "unselectedKey": "0-0"
+          },
+          {
+           "code": "120512",
+           "price": 0,
+           "name": "切块生菜",
+           "maxQuantity": 1,
+           "minQuantity": 0,
+           "selectedQuantity": 1,
+           "selectedKey": "0-1",
+           "unselectedKey": "0-0"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": 2,
+    "name": "中薯条",
+    "quantity": 1,
+    "maxQuantity": 1,
+    "minQuantity": 1,
+    "choices": [
+     {
+      "code": "4810",
+      "name": "中薯条",
+      "quantity": 1,
+      "maxQuantity": -1,
+      "isDefault": 1,
+      "diffPrice": "+ ¥0",
+      "supportModify": false
+     }
+    ]
+   },
+   {
+    "id": 3,
+    "name": "可乐中杯",
+    "quantity": 1,
+    "maxQuantity": 1,
+    "minQuantity": 1,
+    "choices": [
+     {
+      "code": "3050",
+      "name": "可乐中杯",
+      "quantity": 1,
+      "maxQuantity": -1,
+      "isDefault": 1,
+      "diffPrice": "+ ¥0",
+      "supportModify": true,
+      "modification": {
+       "items": [
+        {
+         "maxValues": 1,
+         "minValues": 1,
+         "values": [
+          {
+           "code": "200002",
+           "price": 0,
+           "name": "标准",
+           "maxQuantity": 1,
+           "minQuantity": 0,
+           "selectedQuantity": 1,
+           "selectedKey": "0-1"
+          },
+          {
+           "code": "200002",
+           "price": 0,
+           "name": "去冰",
+           "maxQuantity": 1,
+           "minQuantity": 0,
+           "selectedQuantity": 0,
+           "selectedKey": "0-0"
+          },
+          {
+           "code": "200002",
+           "price": 0,
+           "name": "多冰",
+           "maxQuantity": 1,
+           "minQuantity": 0,
+           "selectedQuantity": 0,
+           "selectedKey": "0-2"
+          },
+          {
+           "code": "200002",
+           "price": 0,
+           "name": "少冰",
+           "maxQuantity": 1,
+           "minQuantity": 0,
+           "selectedQuantity": 0,
+           "selectedKey": "1-1"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "supportModify": false
+ }
+}
