@@ -1,0 +1,78 @@
+{
+ "_说明": "用例3（6人·1人不要牛肉·人均35）的 calculate-price 原始返回，2026-10-25 13:37 真实调用；couponId/couponCode 已遮盖",
+ "args": {
+  "storeCode": "1450713",
+  "orderType": 1,
+  "beType": 1,
+  "items": [
+   {
+    "productCode": "9900015151",
+    "quantity": 2
+   },
+   {
+    "productCode": "9900004002",
+    "quantity": 1,
+    "couponId": "B7A9CFE8…(已遮盖)",
+    "couponCode": "MCD6TS…(已遮盖)"
+   },
+   {
+    "productCode": "9900005462",
+    "quantity": 1
+   },
+   {
+    "productCode": "521950",
+    "quantity": 1
+   }
+  ]
+ },
+ "success": true,
+ "code": 200,
+ "datetime": "2026-10-25 13:37:28",
+ "data": {
+  "originalPrice": 19680,
+  "price": 17370,
+  "discount": 2310,
+  "productList": [
+   {
+    "productCode": "9900015151",
+    "productName": "麦麦周末双人餐",
+    "quantity": 2,
+    "originalSubtotal": 9980,
+    "subtotal": 9980
+   },
+   {
+    "productCode": "9900005462",
+    "productName": "板烧鸡腿堡三件套",
+    "quantity": 1,
+    "originalSubtotal": 3450,
+    "subtotal": 3450
+   },
+   {
+    "productCode": "521950",
+    "productName": "蓝莓爆爆珠麦旋风",
+    "quantity": 1,
+    "originalSubtotal": 1650,
+    "subtotal": 1650
+   },
+   {
+    "productCode": "9900004002",
+    "productName": "麦辣鸡腿堡3件套",
+    "quantity": 1,
+    "originalSubtotal": 4600,
+    "subtotal": 2290
+   }
+  ],
+  "takeWayList": [
+   {
+    "code": "eat-in",
+    "title": "堂食",
+    "subtitle": "店内用餐"
+   },
+   {
+    "code": "locker-out",
+    "title": "外带",
+    "subtitle": "店外取餐柜"
+   }
+  ]
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "note": "2026-10-25 13:21 北京时间，Claude 以只读方式复算 Hunyuan 12:57 运行的同一购物篮（双人餐第 2 轮换板烧 + 带券三件套 + 龙焰三件套 + 蓝莓麦旋风）。金额单位为分；券 ID/券码已遮盖。",
+ "args": {
+  "storeCode": "1450713",
+  "orderType": 1,
+  "beType": 1,
+  "items": [
+   {
+    "productCode": "9900015151",
+    "quantity": 1,
+    "roundList": [
+     {
+      "round": "2",
+      "comboItemList": [
+       {
+        "code": "1406",
+        "quantity": 1
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "productCode": "9900004002",
+    "quantity": 1,
+    "couponId": "B7A9CF…FEC5",
+    "couponCode": "MCD6TS…4910"
+   },
+   {
+    "productCode": "9900016073",
+    "quantity": 1
+   },
+   {
+    "productCode": "521950",
+    "quantity": 1
+   }
+  ]
+ },
+ "data": {
+  "productOriginalPrice": 14030,
+  "productPrice": 11720,
+  "originalPrice": 14030,
+  "discount": 2310,
+  "price": 11720,
+  "productList": [
+   {
+    "productCode": "9900015151",
+    "productName": "麦麦周末双人餐",
+    "quantity": 1,
+    "originalSubtotal": 5090,
+    "subtotal": 5090
+   },
+   {
+    "productCode": "9900016073",
+    "productName": "龙焰鸡腿堡三件套",
+    "quantity": 1,
+    "originalSubtotal": 2690,
+    "subtotal": 2690
+   },
+   {
+    "productCode": "521950",
+    "productName": "蓝莓爆爆珠麦旋风",
+    "quantity": 1,
+    "originalSubtotal": 1650,
+    "subtotal": 1650
+   },
+   {
+    "productCode": "9900004002",
+    "productName": "麦辣鸡腿堡3件套",
+    "quantity": 1,
+    "originalSubtotal": 4600,
+    "subtotal": 2290
+   }
+  ],
+  "takeWayList": [
+   {
+    "code": "eat-in",
+    "title": "堂食",
+    "subtitle": "店内用餐"
+   },
+   {
+    "code": "locker-out",
+    "title": "外带",
+    "subtitle": "店外取餐柜"
+   }
+  ]
+ },
+ "datetime": "2026-10-25 13:22:30"
+}
